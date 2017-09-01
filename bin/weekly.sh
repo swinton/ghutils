@@ -1,8 +1,15 @@
 #!/bin/bash
 
+
+function get_token() {
+    echo "$( grep GITHUB_TOKEN ~/.extra | cut -d = -f 2 )"
+}
+
+
 function create_one_on_one_issue() {
-    owner="swinton"
-    repo="scratch"
+    token=$( get_token )
+    owner="github-fieldservices-planning"
+    repo="swinton-jordan"
     title="One-on-one topics for the week of $( date +%Y-%m-%d )"
     body=$(cat <<-END
 ## Agenda
@@ -16,15 +23,16 @@ END
 )
 
     # Generate well-formed JSON, using jq
-    data=$( jq -n \
+    data=$( /usr/local/bin/jq -n \
         --arg t "${title}" \
         --arg b "${body}" \
         --arg a "swinton" \
         '{"title": $t, "body": $b, "assignees": [$a]}' )
 
+    # Create issue
     curl --request POST \
       --url https://api.github.com/repos/${owner}/${repo}/issues \
-      --header "authorization: token ${GITHUB_TOKEN}" \
+      --header "authorization: token ${token}" \
       --header 'content-type: application/json' \
       --data "${data}"
 }
