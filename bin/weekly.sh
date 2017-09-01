@@ -2,7 +2,13 @@
 
 
 function get_token() {
-    echo "$( grep GITHUB_TOKEN ~/.extra | cut -d = -f 2 )"
+    # Get the token from ~/.netrc using Python's netrc library
+    # We expect an entry for api.github.com
+    python - <<-END
+import os, netrc
+machines = netrc.netrc(os.path.expanduser("~/.netrc"))
+print(machines.hosts["api.github.com"][2])
+END
 }
 
 
