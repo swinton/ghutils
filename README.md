@@ -4,7 +4,7 @@ Utilities for working with GitHub.
 
 ### Details
 
-- `weekly.sh`: Script that tends to all once-weekly tasks
+- [`weekly.sh`](https://github.com/swinton/ghutils/blob/master/bin/weekly.sh): Script that tends to all once-weekly tasks
 
 ### Pre-requisites
 
