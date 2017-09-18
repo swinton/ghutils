@@ -8,6 +8,6 @@ Utilities for working with GitHub.
 
 ### Pre-requisites
 
-1. GitHub [personal API access token](https://github.com/settings/tokens), stored in `GITHUB_TOKEN` environment variable
+1. GitHub [personal API access token](https://github.com/settings/tokens), stored in your [`.netrc`](https://github.com/octokit/octokit.rb#using-a-netrc-file)
 1. [`jq`](https://stedolan.github.io/jq/)
 1. [Lingon](https://www.peterborgapps.com/lingon/), to run these scripts automatically on the required cadence
