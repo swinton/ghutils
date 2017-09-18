@@ -33,7 +33,8 @@ END
         --arg t "${title}" \
         --arg b "${body}" \
         --arg a "swinton" \
-        '{"title": $t, "body": $b, "assignees": [$a]}' )
+        --arg l "one-on-one" \
+        '{"title": $t, "body": $b, "assignees": [$a], "labels": [$l]}' )
 
     # Create issue
     curl --request POST \
